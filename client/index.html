@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app"> <!-- Begin html. -->
+    <head> <!-- Begin head. -->
+        <title>Film Festival</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
+
+        <script src="scripts/app.js"></script>
+        
+        <script src="scripts/config/routes.js"></script>
+
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/gallery.js"></script>
+        <script src="scripts/controllers/player.js"></script>
+        <script src="scripts/controllers/account.js"></script>
+    </head> <!-- End head. -->
+    <body> <!-- Begin body. -->
+        <a href="./#/home">Film Festival</a><br>
+        <a href="./#/login">Sign In</a><br>
+        <a href="./#/register">Register</a><br>
+        <br>
+        <div ng-view></div>
+    </body> <!-- End body. -->
+</html> <!-- End html. -->

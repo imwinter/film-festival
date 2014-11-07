@@ -1,0 +1,16 @@
+Create your account:
+<br>
+<br>
+<form name="regForm" ng-submit="submitForm(regForm.$valid)" novalidate>
+    <label>Email Address</label>
+    <br>
+    <input type="email" name="email" ng-model="email" required>
+    <br>
+    <br>
+    <label>Choose a password (4-60 characters)</label>
+    <br>
+    <input type="password" name="password" ng-model="password" ng-minlength="4" ng-maxlength="60" required>
+    <br>
+    <br>
+    <input type="submit" value="Register" ng-disabled="regForm.$invalid">
+</form>
