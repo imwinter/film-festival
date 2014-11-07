@@ -1,18 +1,18 @@
 Your Account
 <br>
 <br>
-<form>
+<form name="loginForm" ng-submit="submitForm(loginForm.$valid)" novalidate>
     Email
     <br>
-    <input type="email" name="email">
+    <input type="email" name="email" ng-model="email" required>
     <br>
     <br>
     Password
     <br>
-    <input type="password" name="password">
+    <input type="password" name="password" ng-model="password" ng-minlength="4" ng-maxlength="60" required>
     <br>
     <br>
-    <input type="submit" value="Sign In">
+    <input type="submit" value="Sign In" ng-disabled="loginForm.$invalid">
 </form>
 <br>
 New? <a href="./#/register">Sign up now.</a>

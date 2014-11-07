@@ -1,4 +1,4 @@
-angular.module('app').config(['$routeProvider', function($routeProvider) {
+angular.module('app').config(['$locationProvider', '$routeProvider', function($location, $routeProvider) {
   $routeProvider.when('/', {
     templateUrl: './views/home.html',
     controller: 'HomeCtrl'
@@ -13,17 +13,24 @@ angular.module('app').config(['$routeProvider', function($routeProvider) {
   }).
   when('/gallery', {
     templateUrl: './../views/gallery.html',
-    controller: 'GalleryCtrl'
+    controller: 'GalleryCtrl',
+    access: { requiredAuthentication: true }
   }).
   when('/player', {
     templateUrl: './../views/player.html',
-    controller: 'PlayerCtrl'
+    controller: 'PlayerCtrl',
+    access: { requiredAuthentication: true }
   }).
   when('/account', {
     templateUrl: './../views/account.html',
-    controller: 'AccountCtrl'
+    controller: 'AccountCtrl',
+    access: { requiredAuthentication: true }
   }).
   otherwise({
     redirectTo: '/'
   })
+}]);
+
+angular.module('app').config(['$httpProvider', function($httpProvider) {
+  $httpProvider.interceptors.push('TokenInterceptor');
 }]);

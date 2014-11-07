@@ -12,5 +12,10 @@ Create your account:
     <input type="password" name="password" ng-model="password" ng-minlength="4" ng-maxlength="60" required>
     <br>
     <br>
+    <label>Confirm password</label>
+    <br>
+    <input type="password" name="passwordConfirm" ng-model="passwordConfirm" ng-minlength="4" ng-maxlength="60" required>
+    <br>
+    <br>
     <input type="submit" value="Register" ng-disabled="regForm.$invalid">
 </form>

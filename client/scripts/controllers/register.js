@@ -1,13 +1,18 @@
-angular.module('app').controller('RegisterCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module('app').controller('RegisterCtrl', ['$scope', '$http', '$location', 'AuthService', 'UserService', function ($scope, $http, $location, AuthService, UserService) {
     $scope.submitForm = function(isValid) {
         if (isValid) {
-            $http.put('http://localhost:8080/register', { email:$scope.email, password:$scope.password }).
-            success(function(data, status, headers, config) {
-                console.log('Success!');
-            }).
-            error(function(data, status, headers, config) {
-                console.log('Fail!');
-            });
+            if (AuthService.isAuthenticated) {
+                $location.path("/gallery");
+            }
+            else {
+                UserService.register($scope.email, $scope.password, $scope.passwordConfirm).success(function(data) {
+                    $location.path("/login");
+                }).error(function(status, data) {
+                    console.log(status);
+                    console.log(data);
+                });
+            
+            }
         }
     }
 }]);
