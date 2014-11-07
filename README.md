@@ -8,7 +8,7 @@ Basic Development Setup:<br>
     - This installs the servers dependencies.<br>
 6. Open a new terminal and type: mongod<br>
     - This starts the MongoDB server.<br>
-7. Open another new terminal and start the Redis server: src/redis-server
+7. Open another new terminal and start the Redis server: src/redis-server<br>
 8. In the original terminal type: node server.js<br>
     - This starts the application server.<br>
 9. Open a browser and navigate to http://localhost:8080/#/<br>
