@@ -8,5 +8,7 @@ Basic Development Setup:<br>
     - This starts the MongoDB server.<br>
 6. In the original terminal type: node server.js<br>
     - This starts the application server.<br>
-7. Open a browser and navigate to http://localhost:8080/#/<br>
+7. Open another new terminal and cd to ./client. Then type: bower install<br>
+    - This installs the clients dependencies.<br>
+8. Open a browser and navigate to http://localhost:8080/#/<br>
     - You should see the view defined in ./client/views/home.html<br>

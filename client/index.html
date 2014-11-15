@@ -3,23 +3,32 @@
     <head> <!-- Begin head. -->
         <title>Film Festival</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
+        <!-- 3rd Party Libraries (Debug - not minified). -->
+        <script src="./bower_components/angular/angular.js"></script>
+        <script src="./bower_components/angular-route/angular-route.js"></script>
 
-        <script src="scripts/app.js"></script>
-        
-        <script src="scripts/config/routes.js"></script>
+        <!-- Bootstrap and JQuery (Debug - not minified). -->
+        <!-- Commented out for now.
+        <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+        <script src="./bower_components/jquery/dist/jquery.js"></script>
+        <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        -->
 
-        <script src="scripts/controllers/home.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/register.js"></script>
-        <script src="scripts/controllers/gallery.js"></script>
-        <script src="scripts/controllers/player.js"></script>
-        <script src="scripts/controllers/account.js"></script>
+        <!-- Application Libraries. -->
+        <script src="./scripts/app.js"></script>
 
-        <script src="scripts/services/auth.js"></script>
-        <script src="scripts/services/token.js"></script>
-        <script src="scripts/services/user.js"></script>
+        <script src="./scripts/config/routes.js"></script>
+
+        <script src="./scripts/controllers/home.js"></script>
+        <script src="./scripts/controllers/login.js"></script>
+        <script src="./scripts/controllers/register.js"></script>
+        <script src="./scripts/controllers/gallery.js"></script>
+        <script src="./scripts/controllers/player.js"></script>
+        <script src="./scripts/controllers/account.js"></script>
+
+        <script src="./scripts/services/auth.js"></script>
+        <script src="./scripts/services/token.js"></script>
+        <script src="./scripts/services/user.js"></script>
     </head> <!-- End head. -->
     <body> <!-- Begin body. -->
         <a href="./#/home">Film Festival</a><br>
