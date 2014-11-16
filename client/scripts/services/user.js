@@ -1,7 +1,7 @@
 angular.module('appServices').factory('UserService', function($http, $location, $window, AuthService) {
     var userServices = {
         login: function(email, password) {
-            return $http.post('http://localhost:8080/user/login', {email: email, password: password});
+            return $http.post('http://localhost:8080/user/login', { email: email, password: password });
         },
         register: function(email, password, passwordConfirmation) {
             return $http.post('http://localhost:8080/user/register', { email: email, password: password, passwordConfirmation: passwordConfirmation });

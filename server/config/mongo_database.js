@@ -17,7 +17,7 @@ var Schema = mongoose.Schema;
 
 // User schema.
 var User = new Schema({
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true, index:true, unique: true },
     password: { type: String, required: true },
     created: { type: Date, default: Date.now }
 });
