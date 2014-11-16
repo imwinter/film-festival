@@ -1,7 +1,7 @@
 Create your account:
 <br>
 <br>
-<form name="regForm" ng-submit="submitForm(regForm.$valid)" novalidate>
+<form name="regForm" ng-submit="submitForm(regForm.$valid, email, password, passwordConfirm)" novalidate>
     <label>Email Address</label>
     <br>
     <input type="email" name="email" ng-model="email" required>

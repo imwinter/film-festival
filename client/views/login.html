@@ -1,7 +1,7 @@
 Sign In
 <br>
 <br>
-<form name="loginForm" ng-submit="submitForm(loginForm.$valid)" novalidate>
+<form name="loginForm" ng-submit="submitForm(loginForm.$valid, email, password)" novalidate>
     Email
     <br>
     <input type="email" name="email" ng-model="email" required>

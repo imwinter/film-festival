@@ -9,3 +9,9 @@ angular.module('app').run(['$rootScope', '$location', '$window', 'AuthService', 
         }
     });
 }]);
+
+angular.module('app').controller('AppCtrl', ['$scope', '$location', 'UserService', function($scope, $location, UserService) {
+    $scope.logout = function() {
+        UserService.logout();
+    }
+}]);

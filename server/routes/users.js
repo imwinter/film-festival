@@ -37,7 +37,7 @@ exports.login = function(req, res) {
 exports.logout = function(req, res) {
     if (req.user) {
         delete req.user;    
-        return res.sendStatus(200);
+        return res.sendStatus(401);
     }
     else {
         return res.sendStatus(401);
