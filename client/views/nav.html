@@ -1,10 +1,9 @@
 <div ng-controller="NavCtrl">
     <a href="./#/home">Film Festival</a><br>
-    <a href="./#/login">Sign In</a><br>
-    <a href="./#/register">Register</a><br>
     <a href="./#/gallery" target="_self">Gallery</a> (Only accessible on login)<br>
     <a href="./#/player" target="_self">Movie Player</a> (Only accessible on login)<br>
     <a href="./#/account" target="_self">Account</a> (Only accessible on login)<br>
+    <a href="./#/login" ng-hide="isLoggedIn">Sign In</a><br>
+    <a href="./#/register" ng-hide="isLoggedIn">Register</a><br>
     <a href="" ng-click="logout()">Log Out</button>
 </div>
-<br>
