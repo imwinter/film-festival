@@ -9,9 +9,3 @@ angular.module('app').run(['$rootScope', '$location', '$window', 'AuthService', 
         }
     });
 }]);
-
-angular.module('app').controller('AppCtrl', ['$scope', 'UserService', function($scope, UserService) {
-    $scope.logout = function() {
-        UserService.logout();
-    }
-}]);

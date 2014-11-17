@@ -1,0 +1,14 @@
+body {
+     background-color: #fff;
+}
+.video-player-wrapper {
+    font-size: 16px;
+}
+#video-player {
+    position: absolute;
+    width: 90%; height: 90%;
+    left: 5%; top: 5%;
+    overflow: hidden;
+    background: #000;
+    font-size: 1em;
+}
