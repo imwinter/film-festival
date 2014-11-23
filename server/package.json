@@ -8,13 +8,14 @@
     "start": "node server.js"
   },
   "author": "Chris Camargo",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^0.8.0",
     "body-parser": "^1.9.2",
     "express": "^4.10.1",
-    "express-jwt": "^0.4.0",
-    "jsonwebtoken": "^1.1.2",
-    "mongoose": "^3.8.18"
+    "express-session": "^1.9.1",
+    "mongoose": "^3.8.18",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0"
   }
 }

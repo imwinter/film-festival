@@ -5,5 +5,5 @@
     <a href="./#/account" target="_self" ng-show="isLoggedIn">Account</a><br>
     <a href="./#/login" ng-hide="isLoggedIn">Sign In</a><br>
     <a href="./#/register" ng-hide="isLoggedIn">Register</a><br>
-    <a href="" ng-click="logout()">Log Out</button>
+    <a href="" ng-click="logout()" ng-show="isLoggedIn">Log Out</button>
 </div>
