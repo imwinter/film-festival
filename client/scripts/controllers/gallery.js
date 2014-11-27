@@ -5,7 +5,7 @@ angular.module('app').controller('GalleryCtrl', ['$scope', '$http', function ($s
 
     $scope.users = [];
     // Fill the array to display it in the page
-    $http.get('/users').success(function(users){
+    $http.get('/api/v1/users').success(function(users){
         for (var i in users) {
           $scope.users.push(users[i]);
       }

@@ -75,8 +75,10 @@ app.get('/', function(req, res) {
     res.sendFile('client/index.html', { 'root': '../' });
 });
 
-// Return all the users in our database.
-app.get('/users', auth, function(req, res){
+// API END-POINTS ==================================================
+
+// List all users: GET /api/v1/users/
+app.get('/api/v1/users', auth, function(req, res) {
     User.find(function(err, users) {
         if (err) {
             res.send(err);
@@ -85,6 +87,13 @@ app.get('/users', auth, function(req, res){
         res.json(users);
     });
 });
+
+// List a user based on email: GET /api/v1/users/:email
+app.get('/api/v1/users/:email', auth, function(req, res) {
+
+});
+
+//==================================================================
 
 // Returns the user info if logged in and '0' otherwise.
 app.get('/loggedin', function(req, res) {
