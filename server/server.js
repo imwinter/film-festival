@@ -75,7 +75,7 @@ app.get('/', function(req, res) {
     res.sendFile('client/index.html', { 'root': '../' });
 });
 
-// Return all the users.
+// Return all the users in our database.
 app.get('/users', auth, function(req, res){
     User.find(function(err, users) {
         if (err) {
@@ -86,7 +86,7 @@ app.get('/users', auth, function(req, res){
     });
 });
 
-// Returns the logged in user info if logged it and '0' otherwise.
+// Returns the user info if logged in and '0' otherwise.
 app.get('/loggedin', function(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
 });
