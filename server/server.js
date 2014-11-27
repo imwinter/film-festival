@@ -63,8 +63,8 @@ app.use(bodyParser.json()); // Parse JSON.
 app.use(session({secret: 'xylotolh20$#@dd999100294ckfuad3', 
                  saveUninitialized: true,
                  resave: true}));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize()); // Initialize Passport.
+app.use(passport.session()); // Initialize Passport session.
 
 // Start the server.
 app.listen(port);
@@ -75,6 +75,7 @@ app.get('/', function(req, res) {
     res.sendFile('client/index.html', { 'root': '../' });
 });
 
+// Return all the users.
 app.get('/users', auth, function(req, res){
     User.find(function(err, users) {
         if (err) {
@@ -85,10 +86,12 @@ app.get('/users', auth, function(req, res){
     });
 });
 
+// Returns the logged in user info if logged it and '0' otherwise.
 app.get('/loggedin', function(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
 });
 
+// Register a new user.
 app.post('/register', function(req, res) {
     var email = req.body.email || '';
     var password = req.body.password || '';
@@ -111,10 +114,12 @@ app.post('/register', function(req, res) {
     });
 });
 
+// Log a user in. Authenticate with passport locally.
 app.post('/login', passport.authenticate('local'), function(req, res) {
     res.send(req.user);
 });
 
+// Log a user out.
 app.post('/logout', function(req, res){
     req.logOut();
     res.sendStatus(200);
