@@ -1,4 +1,4 @@
-angular.module('appServices').factory('httpInterceptor', function($q, $location) {
+angular.module('app').factory('httpInterceptor', function($q, $location) {
     return {
       'response': function(response) {
         return response;

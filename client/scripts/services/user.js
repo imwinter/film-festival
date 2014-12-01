@@ -1,4 +1,4 @@
-angular.module('appServices').factory('UserService', function($rootScope, $http, $location, $window) {
+angular.module('app').factory('UserService', function($rootScope, $http, $location, $window) {
     var userServices = {
         login: function(email, password) {
             return $http.post('http://localhost:8080/login', { email: email, password: password });

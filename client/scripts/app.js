@@ -1,2 +1,1 @@
-angular.module('app', ['ngRoute', 'appServices']);
-angular.module('appServices', []);
+angular.module('app', ['ngRoute']);
