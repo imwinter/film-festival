@@ -10,6 +10,27 @@ var session = require('express-session'); // Simple session middleware for Expre
 
 var Database = require('./database.js');
 
+var movies = require("./movies.json");
+
+(function () {
+    Database.Movie.remove({}, function(err) {});
+
+    for (var i = 0; i < movies.length; ++i) {
+        var movie = new Database.Movie();
+        movie.movieid = movies[i].movieid;
+        movie.url = movies[i].url;
+        movie.title = movies[i].title;
+        movie.description = movies[i].description;
+
+        movie.save(function(err) {
+            if (err) {
+                console.log("user.save ERROR: " + err);
+            }
+            console.log("Successfully loaded movies database.");
+        });
+    }
+}());
+
 //==================================================================
 // Define the strategy to be used by PassportJS
 passport.use(new LocalStrategy({
@@ -100,36 +121,12 @@ app.get('/api/v1/users/:user_id', auth, function(req, res) {
 
 // Get a movie based on custom ID: GET /api/v1/movies?movieid=1
 app.get('/api/v1/movies', auth, function(req, res) {
-    Database.Movie.findById(req.query.movieid, function(err, movies) {
+    Database.Movie.findOne({ movieid: req.query.movieid }, function(err, movie) {
         if (err) {
             res.send(err);
         }
 
-        res.json(movies);
-    });
-});
-
-// Create a new movie. This is only for development.
-app.post('/api/v1/movies', auth, function(req, res) {
-    var link = req.body.link || '';
-    var title = req.body.title || '';
-    var desc = req.body.desc || '';
-
-    if (link == '' || title == '' || desc == '') {
-        return res.sendStatus(400);
-    }
-
-    var movie = new Database.Movie();
-    movie.link = link;
-    movie.title = title;
-    movie.desc = desc;
-
-    movie.save(function(err) {
-        if (err) {
-            console.log("user.save ERROR: " + err);
-            return res.sendStatus(500);
-        }  
-        return res.sendStatus(200);
+        res.json(movie);
     });
 });
 
