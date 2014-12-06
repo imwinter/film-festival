@@ -57,6 +57,13 @@ angular.module('app').config(['$httpProvider', '$routeProvider', function($httpP
       loggedin: checkLoggedin
     }
   }).
+  when('/movie', {
+    templateUrl: './../views/movie.html',
+    controller: 'MovieCtrl',
+    resolve: {
+      loggedin: checkLoggedin
+    }
+  }).
   otherwise({
     redirectTo: '/'
   })

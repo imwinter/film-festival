@@ -100,7 +100,7 @@ app.get('/api/v1/users/:user_id', auth, function(req, res) {
 
 // Get a movie based on custom ID: GET /api/v1/movies?movieid=1
 app.get('/api/v1/movies', auth, function(req, res) {
-    Database.Movie.findOne({ movieid: req.query.id }, function(err, movies) {
+    Database.Movie.findById(req.query.movieid, function(err, movies) {
         if (err) {
             res.send(err);
         }
@@ -111,16 +111,18 @@ app.get('/api/v1/movies', auth, function(req, res) {
 
 // Create a new movie. This is only for development.
 app.post('/api/v1/movies', auth, function(req, res) {
-    var id = req.body.id || '';
     var link = req.body.link || '';
+    var title = req.body.title || '';
+    var desc = req.body.desc || '';
 
-    if (id == '' || link == '') {
+    if (link == '' || title == '' || desc == '') {
         return res.sendStatus(400);
     }
 
     var movie = new Database.Movie();
-    movie.id = id;
     movie.link = link;
+    movie.title = title;
+    movie.desc = desc;
 
     movie.save(function(err) {
         if (err) {

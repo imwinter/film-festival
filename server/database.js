@@ -25,8 +25,9 @@ var User = new Schema({
 
 // Movie schema.
 var Movie = new Schema({
-    id: { type: Number, required: true, unique: true },
-    link: { type: String }
+    link: { type: String, required: true },
+    title: { type: String, required: true },
+    desc: { type: String }
 });
 
 // Bcrypt middleware on UserSchema.
