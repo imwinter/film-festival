@@ -4,5 +4,11 @@
         "url": "http://dash.edgesuite.net/dash264/TestCases/1b/thomson-networks/1/manifest.mpd",
         "title": "Sample Movie 1",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+        "movieid": "2",
+        "url": "http://dash.edgesuite.net/dash264/TestCases/1a/netflix/exMPD_BIP_TC1.mpd",
+        "title": "Sample Movie 2",
+        "description": "Dissentiet philosophia vis at, inermis sententiae an his. Comprehensam interpretaris sed ut, eum ad rebum autem aliquam, ei melius corrumpit efficiendi vix. Te nec clita ridens, debet iisque definitionem pri te. Pri virtute oporteat ei, ad eos meliore copiosae invidunt. Eu mucius epicuri cum, possit liberavisse qui ea, electram consequat urbanitas vim ad."
     }
 ]

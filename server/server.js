@@ -24,11 +24,11 @@ var movies = require("./movies.json");
 
         movie.save(function(err) {
             if (err) {
-                console.log("user.save ERROR: " + err);
+                console.log("movie.save ERROR: " + err);
             }
-            console.log("Successfully loaded movies database.");
         });
     }
+    console.log("Successfully loaded movies database.");
 }());
 
 //==================================================================
@@ -89,7 +89,7 @@ app.use(passport.session()); // Initialize Passport session.
 
 // Start the server.
 app.listen(port);
-console.log('Sever started on port: ' + port);
+console.log('Server started on port: ' + port);
 
 // Serve the application.
 app.get('/', function(req, res) {
