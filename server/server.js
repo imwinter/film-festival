@@ -8,8 +8,7 @@ var passport = require('passport'); // Passport for authentication (passportjs.o
 var LocalStrategy = require('passport-local').Strategy; // Local authentication.
 var session = require('express-session'); // Simple session middleware for Express.
 
-var User = require('./database.js');
-//var Movie = require('./database.js');
+var Database = require('./database.js');
 
 //==================================================================
 // Define the strategy to be used by PassportJS
@@ -17,7 +16,7 @@ passport.use(new LocalStrategy({
         usernameField: 'email'
     },
     function(email, password, done) {
-        User.findOne({ email: email }, function (err, user) {
+        Database.User.findOne({ email: email }, function (err, user) {
             if (err) { 
                 return done(err); 
             }
@@ -40,7 +39,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+    Database.User.findById(id, function(err, user) {
         done(err, user);
     });
 });
@@ -80,7 +79,7 @@ app.get('/', function(req, res) {
 
 // Get all users: GET /api/v1/users/
 app.get('/api/v1/users', auth, function(req, res) {
-    User.find(function(err, users) {
+    Database.User.find(function(err, users) {
         if (err) {
             res.send(err);
         }
@@ -89,9 +88,9 @@ app.get('/api/v1/users', auth, function(req, res) {
     });
 });
 
-// Get a user based on ID: GET /api/v1/users/:user_id
+// Get a user based on Mongo assigned ID: GET /api/v1/users/:user_id
 app.get('/api/v1/users/:user_id', auth, function(req, res) {
-    User.findById(req.params.user_id, function(err, user) {
+    Database.User.findById(req.params.user_id, function(err, user) {
         if (err) {
             res.send(err);
         }
@@ -99,21 +98,29 @@ app.get('/api/v1/users/:user_id', auth, function(req, res) {
     });
 });
 
+// Get a movie based on custom ID: GET /api/v1/movies?movieid=1
 app.get('/api/v1/movies', auth, function(req, res) {
-    res.json(req.query);
+    Database.Movie.findOne({ movieid: req.query.id }, function(err, movies) {
+        if (err) {
+            res.send(err);
+        }
+
+        res.json(movies);
+    });
 });
 
-/*app.post('api/v1/movies', auth, function(req, res) {
-    var movieid = req.body.movieid || '';
-    var movielink = req.body.movielink || '';
+// Create a new movie. This is only for development.
+app.post('/api/v1/movies', auth, function(req, res) {
+    var id = req.body.id || '';
+    var link = req.body.link || '';
 
-    if (movieid == '' || movielink == '') {
+    if (id == '' || link == '') {
         return res.sendStatus(400);
     }
 
-    var movie = new Movie();
-    movie.movieid = movieid;
-    movie.movielink = movielink;
+    var movie = new Database.Movie();
+    movie.id = id;
+    movie.link = link;
 
     movie.save(function(err) {
         if (err) {
@@ -122,7 +129,7 @@ app.get('/api/v1/movies', auth, function(req, res) {
         }  
         return res.sendStatus(200);
     });
-});*/
+});
 
 //==================================================================
 
@@ -141,7 +148,7 @@ app.post('/register', function(req, res) {
         return res.sendStatus(400);
     }
 
-    var user = new User();
+    var user = new Database.User();
     user.email = email;
     user.password = password;
 

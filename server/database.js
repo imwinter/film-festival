@@ -24,10 +24,10 @@ var User = new Schema({
 });
 
 // Movie schema.
-/*var Movie = new Schema({
-    movieid: { type: Number, required: true, unique: true },
-    movielink: { type: String }
-});*/
+var Movie = new Schema({
+    id: { type: Number, required: true, unique: true },
+    link: { type: String }
+});
 
 // Bcrypt middleware on UserSchema.
 User.pre('save', function(next) {
@@ -63,5 +63,10 @@ User.methods.comparePassword = function(password, cb) {
 };
 
 // Export Models
-module.exports = mongoose.model('User', User);
-//module.exports = mongoose.model('Movie', Movie);
+var UserModel = mongoose.model('User', User);
+var MovieModel = mongoose.model('Movie', Movie);
+
+module.exports = {
+    User: UserModel,
+    Movie: MovieModel
+};
