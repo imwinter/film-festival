@@ -24,7 +24,10 @@ var User = new Schema({
 });
 
 // Movie schema.
-// TODO: Define a Movie schema with appropriate fields.
+/*var Movie = new Schema({
+    movieid: { type: Number, required: true, unique: true },
+    movielink: { type: String }
+});*/
 
 // Bcrypt middleware on UserSchema.
 User.pre('save', function(next) {
@@ -61,3 +64,4 @@ User.methods.comparePassword = function(password, cb) {
 
 // Export Models
 module.exports = mongoose.model('User', User);
+//module.exports = mongoose.model('Movie', Movie);

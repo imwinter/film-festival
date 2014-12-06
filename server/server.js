@@ -9,6 +9,7 @@ var LocalStrategy = require('passport-local').Strategy; // Local authentication.
 var session = require('express-session'); // Simple session middleware for Express.
 
 var User = require('./database.js');
+//var Movie = require('./database.js');
 
 //==================================================================
 // Define the strategy to be used by PassportJS
@@ -77,7 +78,7 @@ app.get('/', function(req, res) {
 
 // API END-POINTS ==================================================
 
-// List all users: GET /api/v1/users/
+// Get all users: GET /api/v1/users/
 app.get('/api/v1/users', auth, function(req, res) {
     User.find(function(err, users) {
         if (err) {
@@ -88,10 +89,40 @@ app.get('/api/v1/users', auth, function(req, res) {
     });
 });
 
-// List a user based on email: GET /api/v1/users/:email
-app.get('/api/v1/users/:email', auth, function(req, res) {
-
+// Get a user based on ID: GET /api/v1/users/:user_id
+app.get('/api/v1/users/:user_id', auth, function(req, res) {
+    User.findById(req.params.user_id, function(err, user) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(user);
+    });
 });
+
+app.get('/api/v1/movies', auth, function(req, res) {
+    res.json(req.query);
+});
+
+/*app.post('api/v1/movies', auth, function(req, res) {
+    var movieid = req.body.movieid || '';
+    var movielink = req.body.movielink || '';
+
+    if (movieid == '' || movielink == '') {
+        return res.sendStatus(400);
+    }
+
+    var movie = new Movie();
+    movie.movieid = movieid;
+    movie.movielink = movielink;
+
+    movie.save(function(err) {
+        if (err) {
+            console.log("user.save ERROR: " + err);
+            return res.sendStatus(500);
+        }  
+        return res.sendStatus(200);
+    });
+});*/
 
 //==================================================================
 
